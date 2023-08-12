@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState } from "react";
+import Number from "./Number";
 
-function App() {
+const App = () => {
+  const [time, setTime] = useState({ h: 0, m: 0, s: 0 });
+
+  setInterval(() => {
+    setTime({
+      h: new Date().getHours(),
+      m: new Date().getMinutes(),
+      s: new Date().getSeconds(),
+    });
+  }, 1000);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="clock-container">
+      <Number props={time.h < 10 ? "0" : `${parseInt(time.h / 10)}`} />
+      <Number props={time.h < 10 ? `${time.h}` : `${time.h % 10}`} />
+      <div className="seperator">:</div>
+      <Number props={time.m < 10 ? "0" : `${parseInt(time.m / 10)}`} />
+      <Number props={time.m < 10 ? `${time.m}` : `${time.m % 10}`} />
+      <div className="seperator">:</div>
+      <Number props={time.s < 10 ? 0 : `${parseInt(time.s / 10)}`} />
+      <Number props={time.s < 10 ? `${time.s}` : `${time.s % 10}`} />
     </div>
   );
-}
+};
 
 export default App;

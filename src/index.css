@@ -1,13 +1,88 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: rgb(27, 27, 27);
+}
+
+.letter-template {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.letter-template .top,
+.letter-template .bottom {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.01rem;
+}
+
+.letter-template .bottom {
+  margin-top: -0.75rem;
+}
+
+.vertical-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.bottom .vbar {
+  align-self: flex-end;
+}
+
+.hbar {
+  width: 9px;
+  height: 60px;
+  background-color: #00ffff;
+  clip-path: polygon(50% 15%, 100% 25%, 100% 75%, 50% 85%, 0% 75%, 0% 25%);
+}
+
+.vbar {
+  width: 40px;
+  height: 9px;
+  background-color: #00ffff;
+  clip-path: polygon(15% 0, 85% 0, 100% 50%, 85% 100%, 15% 100%, 0 50%);
+}
+
+.clock-container {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 1rem;
+}
+
+.seperator {
+  font-size: 100px;
+  margin-bottom: 1rem;
+  color: rgb(216, 216, 216);
+}
+
+.digit-0 .top .vertical-bars .vbar:last-child,
+.digit-1 .top .hbar:first-child,
+.digit-1 .bottom .hbar:first-child,
+.digit-1 .vbar,
+.digit-2 .top .hbar:first-child,
+.digit-2 .bottom .hbar:last-child,
+.digit-3 .top .hbar:first-child,
+.digit-3 .bottom .hbar:first-child,
+.digit-4 .top .vertical-bars .vbar:first-child,
+.digit-4 .bottom > :not(:last-child),
+.digit-5 .top .hbar:last-child,
+.digit-5 .bottom .hbar:first-child,
+.digit-6 .top .hbar:last-child,
+.digit-7 .vbar:not(:first-child),
+.digit-7 .hbar:nth-child(1),
+.digit-9 .bottom .hbar:first-child {
+  opacity: 0.05;
 }
